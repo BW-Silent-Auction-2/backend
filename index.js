@@ -2,7 +2,7 @@ const express = require("express")
 const server = express()
 const authRouter = require("./auth/auth-router")
 const userRouter = require("./users/user-router")
-const PORT = 4000
+const PORT = process.env.PORT || 4000
 
 server.use(express.json())
 
