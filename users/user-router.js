@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const authModel = require("../auth/auth-model")
-const restrict = require("../middleware/restrict")
+const {restrict} = require("../middleware/restrict")
 
 router.get("/", async (req, res, next) => {
     try{

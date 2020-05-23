@@ -5,8 +5,8 @@
 
 /-------------------/ AUTH ROUTES /---------------/
 
-#**Register a user**#
-_method url_" https://silent-auction-2.herokuapp.com/auth/users/register
+# **Register a user** #
+_method url_ https://silent-auction-2.herokuapp.com/auth/users/register
 
 _http method_: **[POST]**
 
@@ -86,8 +86,8 @@ _http method_: **[POST]**
 ```
 `SQLITE_CONSTRAINT` usually indicates that one of the fields is required or has to be unique.
 
-#**User Log in**#
-_method url_" https://silent-auction-2.herokuapp.com/auth/users/login
+# **User Log in** #
+_method url_ https://silent-auction-2.herokuapp.com/auth/users/login
 
 _http method_: **[POST]**
 

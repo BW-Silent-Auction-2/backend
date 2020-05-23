@@ -8,8 +8,8 @@ exports.up = function(knex) {
             .unique()
             .notNullable();
         table
-        .string("password")
-        .notNullable();
+            .string("password")
+            .notNullable();
         table
             .string("email")
             .unique()
@@ -36,13 +36,18 @@ exports.up = function(knex) {
             .integer("bid")
             .notNullable(); 
         table
-            .integer("initial-price")
+            .integer("initialPrice")
             .notNullable();
         table
-            .string("timeSubmit")
+            .string("timeSubmitted")
             .notNullable();
         table
-            .string("timeEnds")
+            .string("timeEnd")
+            .notNullable();
+        table
+            .string("timeDuration");
+        table
+            .integer("sellerId")
             .notNullable();
        
     })

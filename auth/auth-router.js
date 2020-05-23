@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const authModel = require("./auth-model")
-const restrict = require("../middleware/restrict")
+const {sessions, restrict} = require("../middleware/restrict")
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcryptjs")
 
@@ -27,16 +27,16 @@ router.post("/register", async (req, res, next) => {
             userType: req.body.userType
         }
         //Check if all the information are there
-        // if (!user.username || 
-        //     !user.password || 
-        //     !user.email || 
-        //     !user.firstName || 
-        //     !user.lastName || 
-        //     !user.userType) {
-        //         return res.status(428).json({
-        //             message: "Missing required fields."
-        //         })
-        // }
+        if (!user.username || 
+            !user.password || 
+            !user.email || 
+            !user.firstName || 
+            !user.lastName || 
+            !user.userType) {
+                return res.status(428).json({
+                    message: "Missing required fields."
+                })
+        }
 
         //Check if user exists
         const userExist = await authModel.find(user)
@@ -105,7 +105,7 @@ router.post("/login", async (req, res, next) => {
         }
 
         res.cookie('token', jwt.sign(tokenPayload, "Secret string!!!"))
-
+        sessions.username = user.username
         res.status(200).json({
             user: user.username,
             message: "You've logged in."

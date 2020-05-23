@@ -1,5 +1,8 @@
 const express = require("express")
 const jwt = require("jsonwebtoken")
+
+const sessions = {}
+
 function restrict() {
     return async (req, res, next) => {
         try {
@@ -27,4 +30,7 @@ function restrict() {
     }
 }
 
-module.exports = restrict
+module.exports = {
+    sessions,
+    restrict
+}

@@ -2,6 +2,7 @@ const express = require("express")
 const server = express()
 const authRouter = require("./auth/auth-router")
 const userRouter = require("./users/user-router")
+const auctionRouter = require("./users/auction-router")
 const PORT = process.env.PORT || 4000
 
 server.use(express.json())
@@ -15,7 +16,7 @@ server.get("/", (req, res) => {
 
 server.use("/auth/users", authRouter)
 server.use("/", userRouter)
-
+server.use("/auth/users/auction", auctionRouter)
 server.listen(PORT, () => {
     console.log(`Listening to http://localhost:${PORT}`)
 })
