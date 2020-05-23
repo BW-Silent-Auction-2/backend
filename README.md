@@ -5,24 +5,134 @@
 
 /-------------------/ AUTH ROUTES /---------------/
 
-**Register a user**
+#**Register a user**#
 _method url_" https://silent-auction-2.herokuapp.com/auth/users/register
 
 _http method_: **[POST]**
 
-####Headers 
+#### Headers 
 
 |      name             |   type    |  required  |          decription         |
 |-----------------------|-----------|------------|-----------------------------|
 |    `Content-type`       String      Yes            Must be application/json  |
 
-####Body
+#### Body
 
-|name                  type        required        description
-
+|    name         |     type     |   required  |      description           |   
+|-----------------|--------------|-------------|----------------------------|
 |`username`       |   String     |      Yes    |     Must be unique         |
 |`password`       |   String     |      Yes    |                            |
 |`email`          |   String     |      Yes    |     Must be unique         | 
 |`firstName`      |   String     |      Yes    |                            | 
 |`lastName`       |   String     |      Yes    |                            | 
 |`userType`       |   Integer    |      Yes    |     1-Seller, 2-Bidder     | 
+
+#### Example
+```
+    {     
+	"username": "Devin1",
+	"password": "123456",
+	"email": "devin1@gmail.com",
+	"firstName": "Devin",
+	"lastName": "Ong",
+	"userType": 1
+    }
+```
+
+####Response
+
+#### 201 (created)
+
+#### Example Response
+```
+{
+  "username": "Devin1",
+  "email": "devin1@gmail.com",
+  "firstName": "Devin",
+  "lastName": "Ong",
+  "userType": 1
+}
+```
+
+#### 428 (Precondition Failed)
+```
+{
+  "message": "Missing required fields."
+}
+```
+
+#### 401 (Unauthorized)
+```
+{
+  "errorMessage": "Username already taken."
+}
+```
+*or*
+```
+{
+  "errorMessage": "Email already taken."
+}
+```
+
+#### 500 (Server error)
+```
+{
+  "message": "User could not be added.",
+  "error": {
+    "errno": 19,
+    "code": "SQLITE_CONSTRAINT"
+  }
+}
+```
+`SQLITE_CONSTRAINT` usually indicates that one of the fields is required or has to be unique.
+
+#**User Log in**#
+_method url_" https://silent-auction-2.herokuapp.com/auth/users/login
+
+_http method_: **[POST]**
+
+#### Headers 
+
+|      name             |   type    |  required  |          decription         |
+|-----------------------|-----------|------------|-----------------------------|
+|    `Content-type`       String      Yes            Must be application/json  |
+
+#### Body
+
+|name             |     type     |   required  |      description           |   
+|-----------------|--------------|-------------|----------------------------|
+|`username`       |   String     |      Yes    |     Must be unique         |
+|`password`       |   String     |      Yes    |                            |
+
+#### Example
+```
+{
+	"username": "Devin",
+	"password": "123456"
+}
+```
+#### Response
+
+#### 200 (Ok)
+
+#### Example Response
+```
+{
+  "user": "Devin",
+  "message": "You've logged in."
+}
+```
+##### 428 (Preconditon Failed)
+
+```
+  {
+    message: "Missing username or password"
+  }
+```
+
+#### 401 (Unauthorized)
+```
+{
+  "message": "Invalid credentials"
+}
+```
