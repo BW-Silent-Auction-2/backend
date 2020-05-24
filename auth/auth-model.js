@@ -22,7 +22,7 @@ function findEmail(user) {
 }
 
 function getAll() {
-    return db("users").select('username')
+    return db("users").select('*')
 }
 
 function del(user) {

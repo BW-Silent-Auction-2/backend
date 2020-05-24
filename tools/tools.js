@@ -1,6 +1,7 @@
 module.exports = {
     validateDate,
-    calBidDuration
+    calBidDuration,
+    timeLeftInMs
 }
 
 function validateDate(dateValue) {
@@ -37,13 +38,8 @@ function validateDate(dateValue) {
 
 function calBidDuration(timeEnd, timeSubmitted) {
     let timeEndString = timeEnd + " 00:00:00 GMT"
-    console.log("trueTimeEnd before parse", timeEndString)
     trueTimeEnd = Date.parse(timeEndString)
-    console.log("trueTimeEnd after parse", trueTimeEnd)
-
     let trueTimeSubmitted = timeSubmitted
-    console.log("trueTimeSubmitted after parse", trueTimeSubmitted)
-
     let hours = (((trueTimeEnd - trueTimeSubmitted)/ 1000)/60/60)
     let hoursLeft = Math.floor(hours)
     let minutes = (hours - hoursLeft) * 60
@@ -55,9 +51,12 @@ function calBidDuration(timeEnd, timeSubmitted) {
       days += 1
       hoursCal -= 24
     }
-    console.log("Days left: ", days)
-    console.log("Hours left: ", hoursCal)
-    console.log("Minutes left: ", minutesLeft)
-    console.log("Seconds left: ", seconds)
     return `${days} days, ${hoursCal} hours, ${minutesLeft} minutes, ${seconds} seconds left`
+}
+
+function timeLeftInMs(timeEnd, timeSubmitted) {
+    let timeEndString = timeEnd + " 00:00:00 GMT"
+    trueTimeEnd = Date.parse(timeEndString)
+    let trueTimeSubmitted = timeSubmitted
+    return trueTimeEnd - trueTimeSubmitted
 }

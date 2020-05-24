@@ -47,9 +47,15 @@ exports.up = function(knex) {
         table
             .string("timeDuration");
         table
+            .integer("timeDurationInMs");
+        table
             .integer("sellerId")
             .notNullable();
-       
+        table 
+            .integer("bidderId");
+        table
+            .boolean("completed")
+            .defaultTo(false);       
     })
 };
 

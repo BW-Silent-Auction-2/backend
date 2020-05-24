@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const authModel = require("./auth-model")
+const auctionModel = require("../users/auction-model")
 const {sessions, restrict} = require("../middleware/restrict")
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcryptjs")
@@ -40,7 +41,6 @@ router.post("/register", async (req, res, next) => {
 
         //Check if user exists
         const userExist = await authModel.find(user)
-        console.log("userExist: ", userExist)
         if (userExist) {
             return res.status(401).json({
                 errorMessage: "Username already taken."
@@ -148,4 +148,14 @@ router.delete("/", async (req, res,next) => {
     }
 })
 
+///////////////////////////////////////////////////////
+//-------------ALL BID FROM A SPECIFIC USER----------//
+router.get("/:id/allBids", restrict(), async (req, res, next) => {
+    try {
+        const allBids = await auctionModel.allBidsFromUser(req.params.id)
+        res.status(200).json(allBids)
+    } catch(err) {
+        next(err)
+    }
+})
 module.exports = router
