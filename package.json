@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "[Link to PVD](https://docs.google.com/document/d/1KEZ06Q_yHd8nVpVHYToFzfP6P2m8ZGHwvp02NlnUTfU/edit#)",
   "main": "index.js",
+  "engine": {
+    "node": "12.12.x"
+  },
   "scripts": {
     "server": "nodemon index.js",
     "start": "node index.js",
