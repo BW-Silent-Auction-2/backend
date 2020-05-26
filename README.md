@@ -147,3 +147,6 @@ _http method_: **[GET]**
 #### 200 (OK)
 
 #### Example Response
+{
+  
+}
