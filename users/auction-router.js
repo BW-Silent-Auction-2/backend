@@ -66,7 +66,7 @@ router.post("/create", restrict(), async (req, res, next) => {
 
 /////////////////////////////////////////////
 //--------------GET ALL ITEMS--------------//
-router.get("/all", restrict(), async (req, res, next) => {
+router.get("/all", async (req, res, next) => {
     try {
         const allItems = await auctionModel.getAll()
         res.status(200).json(allItems)
