@@ -136,3 +136,14 @@ _http method_: **[POST]**
   "message": "Invalid credentials"
 }
 ```
+
+/-------------------/ AUCTION ROUTES /-----------------/
+
+# **GET ALL AUCTIONS** #
+_method url_ https://silent-auction-2.herokuapp.com/auth/users/auction/all
+
+_http method_: **[GET]**
+
+#### 200 (OK)
+
+#### Example Response
