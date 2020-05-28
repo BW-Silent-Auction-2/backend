@@ -21,7 +21,7 @@ router.post("/create", restrict(), async (req, res, next) => {
             timeDuration: "",
             timeDurationInMs: null,
             sellerId: seller.id,
-            imgUrl: res.body.imgUrl           
+            imgUrl: req.body.imgUrl           
         }
         
         // Check time format
