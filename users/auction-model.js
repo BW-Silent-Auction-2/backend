@@ -12,7 +12,7 @@ module.exports = {
 }
 
 function add(item) {
-    return db("items").insert(item)
+    return db("items").insert(item).returning("id")
 }
 
 function findItem(item) {

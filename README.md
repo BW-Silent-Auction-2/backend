@@ -149,7 +149,7 @@ _http method_: **[POST]**
 
 
 # **GET USER BY ID** #
-_method url_ https://silent-auction-2.herokuapp.com/auth/user/:id
+_method url_ https://silent-auction-2.herokuapp.com/user/1
 
 _http method_: **[GET]**
 
