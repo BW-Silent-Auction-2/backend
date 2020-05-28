@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs")
 module.exports = {
     add,
     find,
+    findUserById,
     findEmail,
     getAll,
     del,
@@ -15,6 +16,10 @@ async function add(user) {
 
 function find(user) {
     return db("users").where({username: `${user.username}`}).first()
+}
+
+function findUserById(id) {
+    return db("users").select('id', 'username', 'email', 'firstName', 'lastName', 'userType').where({id: id}).first()
 }
 
 function findEmail(user) {

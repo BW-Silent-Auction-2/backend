@@ -89,7 +89,7 @@ router.get("/:id", restrict(), async (req, res, next) => {
         }
         res.status(200).json(item)
     } catch(err) {
-
+        next(err)
     }
 })
 

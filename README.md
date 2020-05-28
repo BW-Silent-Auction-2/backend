@@ -86,6 +86,11 @@ _http method_: **[POST]**
 ```
 `SQLITE_CONSTRAINT` usually indicates that one of the fields is required or has to be unique.
 
+
+-------------------------------------------------------------
+-------------------------------------------------------------
+
+
 # **User Log in** #
 _method url_ https://silent-auction-2.herokuapp.com/auth/users/login
 
@@ -136,6 +141,39 @@ _http method_: **[POST]**
   "message": "Invalid credentials"
 }
 ```
+
+
+-------------------------------------------------------------
+-------------------------------------------------------------
+
+
+
+# **GET USER BY ID** #
+_method url_ https://silent-auction-2.herokuapp.com/auth/user/:id
+
+_http method_: **[GET]**
+
+#### Response
+
+#### 200 (Ok)
+
+#### Example Response
+```
+{
+  "id": 2,
+  "username": "Devin2",
+  "email": "devin2@gmail.com",
+  "firstName": "Devin",
+  "lastName": "Ong",
+  "userType": 1
+}
+```
+
+#### 401 (Unauthorized)
+```
+{
+  "message": "Please log in."
+}
 
 /-------------------/ AUCTION ROUTES /-----------------/
 
