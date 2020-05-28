@@ -13,7 +13,7 @@ router.get("/", async (req, res, next) => {
     }
 })
 
-router.get("/user/:id", restrict(), async (req, res, next) => {
+router.get("/user/:id", async (req, res, next) => {
     try {
         const user = await authModel.findUserById(req.params.id)
         if(!user) {
