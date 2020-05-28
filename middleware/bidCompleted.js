@@ -11,6 +11,12 @@ function bidCompleted() {
             const itemId = {
                 id: req.params.id 
             }
+            const auctionItem = await auctionModel.findItemById(itemId.id)
+            if (!auctionItem) {
+                return res.status(401).json({
+                    errorMessage: "There's no item associated with this id"
+                })
+            }
             const item = await auctionModel.findItemById(itemId.id)
             if (item.timeDurationInMs <= 0) {
                 const itemTimesUp = await auctionModel.statusUpdate(item)

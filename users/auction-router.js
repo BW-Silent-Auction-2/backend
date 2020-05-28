@@ -110,7 +110,8 @@ router.put("/:id/bid", restrict(), bidCompleted(), async (req, res, next) => {
             })
         }
         const bidUpdate = await auctionModel.bidUpdate(bid)
-        res.status(200).json(bidUpdate)
+        const findThatItem = await auctionModel.findItemById(req.params.id)
+        res.status(200).json(findThatItem)
 
     } catch(err) {
         next(err)

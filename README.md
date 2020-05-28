@@ -39,7 +39,7 @@ _http method_: **[POST]**
     }
 ```
 
-####Response
+#### Response
 
 #### 201 (created)
 
@@ -174,17 +174,66 @@ _http method_: **[GET]**
 {
   "message": "Please log in."
 }
+```
 
 /-------------------/ AUCTION ROUTES /-----------------/
 
-# **GET ALL AUCTIONS** #
-_method url_ https://silent-auction-2.herokuapp.com/auth/users/auction/all
+# **BID AN ITEM** #
+_method url_ https://silent-auction-2.herokuapp.com/auth/users/auction/:id/bid
 
-_http method_: **[GET]**
+_http method_: **[PUT]**
 
-#### 200 (OK)
+#### Headers 
+
+|      name             |   type    |  required  |          decription         |
+|-----------------------|-----------|------------|-----------------------------|
+|    `Content-type`       String      Yes            Must be application/json  |
+
+#### Body
+
+|    name         |     type     |   required  |      description               |   
+|-----------------|--------------|-------------|--------------------------------|
+|`bid`            |   Integer    |      Yes    |Must be over 5% of initialPrice |
+
+
+#### Example
+```
+{
+	"bid": 40000000
+}
+```
+
+#### Response
+
+#### 200 (Ok)
 
 #### Example Response
+```
 {
-  
+  "id": 2,
+  "title": "Salvator AMundaias",
+  "description": "Leonardo da Vinci’s depiction of Jesus Christ holding a crystal orb is the most expensive painting in the world!",
+  "bid": 610000000,
+  "initialPrice": 450000000,
+  "timeSubmitted": "1590700277562.0",
+  "timeEnd": "05/29/2020",
+  "timeDuration": "0 days, 2 hours, 48 minutes, 42 seconds left",
+  "timeDurationInMs": 10122438,
+  "sellerId": 1,
+  "bidderId": 1,
+  "completed": 0,
+  "imgUrl": "https://res.cloudinary.com/dputswhco/image/upload/v1590638441/g9q8nvjt7xsxubbhg78a.webp"
+}
+```
+
+#### 401 (Unauthorized)
+```
+{
+  "message": "Please log in."
+}
+```
+
+```
+{
+  "errorMessage": "There's no item associated with this id"
 }
