@@ -55,7 +55,9 @@ exports.up = function(knex) {
             .integer("bidderId");
         table
             .boolean("completed")
-            .defaultTo(false);       
+            .defaultTo(false);
+        table
+            .string("imgUrl")       
     })
 };
 
