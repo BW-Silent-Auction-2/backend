@@ -126,6 +126,7 @@ router.post("/logout", async (req, res, next) => {
         }
         res.cookie('token', Math.random())
         res.status(200).json({
+            token: -1,
             message: "You've logged out."
         })
     } catch(err) {
