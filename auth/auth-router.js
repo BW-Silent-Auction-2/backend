@@ -107,6 +107,7 @@ router.post("/login", async (req, res, next) => {
         res.cookie('token', jwt.sign(tokenPayload, "Secret string!!!"))
         sessions.username = user.username
         res.status(200).json({
+            token: Math.random(),
             user: user.username,
             message: "You've logged in."
         })
