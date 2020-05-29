@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const authModel = require("../auth/auth-model")
-const restrict = require("../middleware/restrict")
+const {restrict} = require("../middleware/restrict")
 
 router.get("/", async (req, res, next) => {
     try{
@@ -12,6 +12,21 @@ router.get("/", async (req, res, next) => {
         next(err)
     }
 })
+
+router.get("/user/:id", async (req, res, next) => {
+    try {
+        const user = await authModel.findUserById(req.params.id)
+        if(!user) {
+            return res.status(401).json({
+                errorMessage: "There's no user associated with this id"
+            })
+        }
+        res.status(200).json(user)
+    } catch(err) {
+        next(err)
+    }
+})
+
 
 router.get("/users/all", restrict(), async (req, res, next) => {
     try {
