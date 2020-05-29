@@ -18,6 +18,11 @@ server.get("/", (req, res) => {
 server.use("/auth/users", authRouter)
 server.use("/", userRouter)
 server.use("/auth/users/auction", auctionRouter)
+
+if (!module.parent) {
 server.listen(PORT, () => {
     console.log(`Listening to http://localhost:${PORT}`)
 })
+}
+
+module.exports = server
