@@ -24,6 +24,7 @@
   "homepage": "https://github.com/BW-Silent-Auction-2/backend#readme",
   "devDependencies": {
     "jest": "^26.0.1",
+    "knex-cleaner": "^1.3.0",
     "nodemon": "^2.0.4",
     "supertest": "^4.0.2"
   },

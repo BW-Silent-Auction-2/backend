@@ -15,7 +15,7 @@ async function add(user) {
 }
 
 function find(user) {
-    return db("users").where({username: `${user.username}`}).first()
+    return db("users").where({username: `${user.username}`}).first().returning("id")
 }
 
 function findUserById(id) {
