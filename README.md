@@ -183,12 +183,6 @@ _method url_ https://silent-auction-2.herokuapp.com/auth/users/auction/:id/bid
 
 _http method_: **[PUT]**
 
-#### Headers 
-
-|      name             |   type    |  required  |          decription         |
-|-----------------------|-----------|------------|-----------------------------|
-|    `Content-type`       String      Yes            Must be application/json  |
-
 #### Body
 
 |    name         |     type     |   required  |      description               |   

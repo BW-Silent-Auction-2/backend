@@ -118,7 +118,23 @@ router.put("/:id/bid", restrict(), bidCompleted(), async (req, res, next) => {
     }
 })
 
-
+/////////////////////////////////////////////
+//--------------DELETE ITEM---------------//
+router.delete("/:id", restrict(), async (req, res, next) => {
+    try {
+        const deleteItem = await auctionModel.delItem(req.params.id)
+        if (!deleteItem) {
+            return res.status(404).json({
+                errorMessage: "item not found"
+            })
+        }
+        res.status(200).json({
+            message: "Item deleted"
+        })
+    } catch(err) {
+        next(err)
+    }
+})
 
 
 module.exports = router

@@ -8,7 +8,8 @@ module.exports = {
     findItemById,
     bidUpdate,
     statusUpdate,
-    allBidsFromUser
+    allBidsFromUser,
+    delItem
 }
 
 function add(item) {
@@ -42,4 +43,8 @@ function statusUpdate(item) {
 
 function allBidsFromUser(id) {
     return db("items").where({bidderId: id})
+}
+
+function delItem(id) {
+    return db("items").where({ id: id}).del()
 }
