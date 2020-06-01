@@ -13,7 +13,7 @@ function restrict() {
                 })
             }
             //Checking token on cookie
-            let token = req.headers.cookie
+            let token = sessions.token
             if (!token) {
                 return res.status(401).json({
                     errorMessage: "Please log in."

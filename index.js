@@ -1,5 +1,6 @@
 const express = require("express")
 const cors = require("cors")
+const cookieParser = require("cookie-parser")
 const server = express()
 const authRouter = require("./auth/auth-router")
 const userRouter = require("./users/user-router")
@@ -7,6 +8,7 @@ const auctionRouter = require("./users/auction-router")
 const PORT = process.env.PORT || 4000
 
 server.use(express.json())
+server.use(cookieParser())
 server.use(cors())
 
 server.get("/", (req, res) => {
